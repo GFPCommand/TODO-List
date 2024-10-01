@@ -25,9 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Install .NET
-        uses: actions/setup-dotnet@v4.0.1
-
       - name: Build
         run: dotnet build
       
