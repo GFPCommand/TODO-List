@@ -10,6 +10,8 @@ namespace TODO_List.Pages
 
         [BindProperty]
         public Models.Task? TaskInfo { get; set; }
+        [BindProperty]
+        public bool IsCompleted { get; set; }
 
         public TaskInfoModel(ApplicationContext db)
         {
@@ -27,6 +29,7 @@ namespace TODO_List.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            TaskInfo.Iscompleted = IsCompleted;
             context.Tasks.Update(TaskInfo!);
 
             await context.SaveChangesAsync();

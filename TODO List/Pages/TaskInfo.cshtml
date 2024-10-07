@@ -10,7 +10,7 @@
     <p>Начало выполнения <input type="datetime" name="fromdate" value="@Model.TaskInfo.Fromdate.ToString()" /></p>
     <p>Сроки выполнения <input type="datetime" name="todate" value="@Model.TaskInfo.Todate" /></p>
     <p>Срочность выполнения <input name="urgency" value="@Model.TaskInfo?.Urgency"/></p>
-    <p>Выполнено? <input type="checkbox" name="iscompleted" checked="@Model.TaskInfo?.Iscompleted"/></p>
+    <p>Выполнено? <input asp-for="IsCompleted" type="checkbox" name="Iscompleted" checked="@Model.TaskInfo?.Iscompleted" /></p>
     <button type="submit">Сохранить</button>
     <button type="submit" asp-page-handler="delete" asp-route-id="@Model.TaskInfo.Id">Удалить</button>
 </form>
