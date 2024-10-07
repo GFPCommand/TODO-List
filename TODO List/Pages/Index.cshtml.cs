@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TODO_List.Models;
@@ -8,6 +9,8 @@ namespace TODO_List.Pages
 	{
 		ApplicationContext context;
 		public List<Models.Task> Tasks { get; set; } = new();
+
+		[BindProperty]
 		public Models.Task TaskInfo { get; set; } = new();
 
 		public IndexModel(ApplicationContext db)
@@ -20,9 +23,15 @@ namespace TODO_List.Pages
             Tasks = context.Tasks.AsNoTracking().ToList();
 		}
 
-		public void OnPost()
+		public async Task<IActionResult> OnPost()
 		{
-			Tasks = context.Tasks.AsNoTracking().ToList();
+			Tasks = await context.Tasks.AsNoTracking().ToListAsync();
+
+			await context.AddAsync(TaskInfo);
+
+			await context.SaveChangesAsync();
+
+			return RedirectToAction("Index");
 		}
 	}
 }

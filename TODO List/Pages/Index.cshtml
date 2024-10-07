@@ -52,11 +52,11 @@
                     <p>Сроки выполнения <input id="task-period" type="date" name="todate" required/></p>
                     <p>
                         Срочность выполнения
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Неотложно</option>
-                            <option value="1">Срочно</option>
-                            <option value="2">Может подождать</option>
-                            <option value="3">Не срочно</option>
+                        <select name="urgency" class="form-select" aria-label="Default select example">
+                            <option value="Неотложно" selected>Неотложно</option>
+                            <option value="Срочно">Срочно</option>
+                            <option value="Может подождать">Может подождать</option>
+                            <option value="Не срочно">Не срочно</option>
                         </select>
                     </p>
                     <button type="submit" class="btn btn-primary">Добавить задачу</button>
