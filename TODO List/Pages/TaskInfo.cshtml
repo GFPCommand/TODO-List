@@ -1,0 +1,17 @@
+﻿@page
+@model TODO_List.Pages.TaskInfoModel
+@{
+    ViewData["Title"] = "Task Info";
+}
+
+<form method="post">
+    <input name="id" value="@Model.TaskInfo?.Id" type="hidden" />
+    <p>Название задачи <input type="text" name="name" value="@Model.TaskInfo?.Name"/></p>
+    <p>Описание задачи <input type="text" name="description" value="@Model.TaskInfo?.Description"/></p>
+    <p>Начало выполнения <input type="date" name="fromdate" value="@Model.TaskInfo?.Fromdate"/></p>
+    <p>Сроки выполнения <input type="date" name="todate" value="@Model.TaskInfo?.Todate"/></p>
+    <p>Срочность выполнения <input name="urgency" value="@Model.TaskInfo?.Urgency"/></p>
+    <p>Выполнено? <input type="checkbox" name="iscompleted" checked="@Model.TaskInfo?.Iscompleted"/></p>
+    <button type="submit">Сохранить</button>
+    <button type="submit" asp-page-handler="delete" asp-route-id="@Model.TaskInfo.Id">Удалить</button>
+</form>

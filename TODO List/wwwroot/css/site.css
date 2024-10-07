@@ -20,3 +20,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.item {
+    cursor: pointer;
+}
+
+.block {
+    border: 1px solid;
+    border-radius: 1.5em;
+    padding: 0.5em;
+    margin: 1% -2em;
+}
+
+.info-img {
+    width: 3%
+}
+
+.data {
+    font-size: 1.2em;
+}

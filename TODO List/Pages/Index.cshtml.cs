@@ -1,20 +1,23 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using TODO_List.Models;
 
 namespace TODO_List.Pages
 {
 	public class IndexModel : PageModel
 	{
-		private readonly ILogger<IndexModel> _logger;
+		ApplicationContext context;
+		public List<Models.Task> Tasks { get; set; } = new();
+		public Models.Task TaskInfo { get; set; } = new();
 
-		public IndexModel(ILogger<IndexModel> logger)
+		public IndexModel(ApplicationContext db)
 		{
-			_logger = logger;
+			context = db;
 		}
 
 		public void OnGet()
 		{
-
+            Tasks = context.Tasks.AsNoTracking().ToList();
 		}
 	}
 }
