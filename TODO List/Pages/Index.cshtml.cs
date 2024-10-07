@@ -19,5 +19,10 @@ namespace TODO_List.Pages
 		{
             Tasks = context.Tasks.AsNoTracking().ToList();
 		}
+
+		public void OnPost()
+		{
+			Tasks = context.Tasks.AsNoTracking().ToList();
+		}
 	}
 }
