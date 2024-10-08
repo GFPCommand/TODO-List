@@ -18,7 +18,7 @@
 
     @foreach (var item in Model.Tasks)
     {
-        <div class="block">
+        <div class="block" style="background: @(item.Iscompleted ? "lime" : item.Todate < DateTime.Now ? "#EF3038" : "white")">
             <table class="table table-borderless" style="margin: 1% 0;">
                 <tr class="data">
                     <td class="col-1"><a asp-page="TaskInfo" asp-route-id="@item.Id">@(count++)</a></td>
