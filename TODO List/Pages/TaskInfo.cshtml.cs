@@ -30,6 +30,9 @@ namespace TODO_List.Pages
         public async Task<IActionResult> OnPostAsync()
         {
             TaskInfo.Iscompleted = IsCompleted;
+
+            if (TaskInfo.Fromdate > TaskInfo.Todate) return Page();
+
             context.Tasks.Update(TaskInfo!);
 
             await context.SaveChangesAsync();

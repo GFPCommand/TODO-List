@@ -20,12 +20,12 @@ namespace TODO_List.Pages
 
 		public void OnGet()
 		{
-            Tasks = context.Tasks.AsNoTracking().ToList();
+            Tasks = context.Tasks.AsNoTracking().OrderBy(x => x.Id).ToList();
 		}
 
 		public async Task<IActionResult> OnPost()
 		{
-			Tasks = await context.Tasks.AsNoTracking().ToListAsync();
+			if (TaskInfo.Fromdate > TaskInfo.Todate) return RedirectToAction("Index");
 
 			await context.AddAsync(TaskInfo);
 
@@ -33,5 +33,5 @@ namespace TODO_List.Pages
 
 			return RedirectToAction("Index");
 		}
-	}
+    }
 }

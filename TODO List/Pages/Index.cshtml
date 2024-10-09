@@ -7,34 +7,31 @@
 
 <div class="container">
     <table class="table">
-        <tr>
-            <td class="col-1">#</td>
-            <td class="col-5">Название</td>
-            <td class="col-3">Срок выполнения</td>
-            <td class="col-3">Срочность выполнения</td>
-            <td class="col-1">Выполнено?</td>
-        </tr>
-    </table>
-
-    @foreach (var item in Model.Tasks)
-    {
-        <div class="block" style="background: @(item.Iscompleted ? "lime" : item.Todate < DateTime.Now ? "#EF3038" : "white")">
-            <table class="table table-borderless" style="margin: 1% 0;">
-                <tr class="data">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Срок выполнения</th>
+                <th>Срочность выполнения</th>
+                <th>Выполнено?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Tasks)
+            {
+                <tr class="@(item.Iscompleted ? "table-success" : item.Todate < DateTime.Now ? "table-danger" : "table-default")">
                     <td class="col-1"><a asp-page="TaskInfo" asp-route-id="@item.Id">@(count++)</a></td>
                     <td class="col-5">@item.Name</td>
                     <td class="col-3">@item.Todate</td>
                     <td class="col-3">@item.Urgency</td>
                     <td class="col-1">@(item.Iscompleted ? "Да" : "Нет")</td>
                 </tr>
-            </table>
-        </div>
-    }
+            }
+        </tbody>
+    </table>
 
-    <a data-bs-toggle="modal" data-bs-target="#add-task" style="cursor: pointer; background: gray; padding: 1%;">Добавить задачу</a>
-    <br />
-    <br />
-    <a href="/Download" style="cursor: pointer; background: yellow; padding: 1%;">Выгрузить список</a>
+    <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-task">Добавить задачу</a>
+    <a class="btn btn-info" href="Download">Выгрузить список</a>
 </div>
 
 <div class="modal fade" id="add-task" tabindex="-1" aria-labelledby="info-label" aria-hidden="true">
